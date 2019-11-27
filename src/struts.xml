@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<package name="all" extends="struts-default">
+	<interceptors>
+		<interceptor name="permissions" class="Service.PermissionsInterceptor"/>
+		<interceptor-stack name="myStack">
+			<interceptor-ref name="permissions"/>
+			<interceptor-ref name="defaultStack"/>
+		</interceptor-stack>
+	</interceptors>
+	
+	
+	<action name="Register" class="Service.RegisterAction">
+		<result name="success">/index.jsp</result>
+		<result name="error">/register.jsp</result>
+	</action>
+	
+	<action name="Login" class="Service.LoginAction">
+		<result name="success">/home.jsp</result>
+		<result name="error">/index.jsp</result>
+	</action>
+	
+	<action name="updateUser_*" class="Service.UpdateAction" method="{1}">
+		<result name="success">/home.jsp</result>
+		<result name="error">/updateUser_{1}.jsp</result>
+		<result name="login">/index.jsp</result>
+		<interceptor-ref name="myStack"/>
+	</action>
+	
+	<action name="exit" class="Service.ExitAction">
+		<result name="success">/index.jsp</result>
+	</action>
+	
+	<action name="Book_*" class="Service.BookAction" method="Book_{1}">
+		<result name="Book_{1}_success">/Book_{1}.jsp</result>
+		<result name="Book_{1}_error">/Book_{1}.jsp</result>
+		<result name="Book_add_error">/Book_add.jsp</result>
+		<result name="Book_delete_error">/Book_delete.jsp</result>
+		<result name="Book_update1_success">/Book_update2.jsp</result>
+		<result name="Book_update1_error">/Book_update1.jsp</result>
+		<result name="Book_find_success">/Book_find2.jsp</result>
+		<result name="Book_find_error">/Book_find1.jsp</result>
+		<result name="login">/index.jsp</result>
+		<interceptor-ref name="myStack"/>
+	</action>
+	<action name="BackHome" class="Service.BackHomeAction">
+		<result name="success">/home.jsp</result>
+	</action>
+	
+	</package>
+</struts>

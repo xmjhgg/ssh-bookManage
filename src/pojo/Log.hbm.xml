@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- package：指定实体类的包 -->
+<hibernate-mapping >
+	<class name="pojo.Log" table="t_log">
+	<id name="lid">
+	<generator class="native"></generator>
+	</id>
+	<property name="username"/>
+	<property name="bname"/>
+	<property name="action"/>
+	<property name="date"/>
+	</class>	
+
+</hibernate-mapping>

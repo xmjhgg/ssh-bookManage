@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- package：指定实体类的包 -->
+<hibernate-mapping >
+	<class name="pojo.User" table="t_user">
+	<id name="sid">
+	<generator class="native"></generator>
+	</id>
+	<property name="username"/>
+	<property name="password"/>
+	<property name="name"/>
+	<property name="phone"/>
+	<set name="books">
+		<key column="bid"/>
+		<one-to-many class="pojo.Book"/>
+	</set>
+	</class>	
+
+</hibernate-mapping>
